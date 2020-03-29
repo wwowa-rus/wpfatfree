@@ -2,4 +2,8 @@ public/assets/css
 public/assets/js
 public/assets/tinymce
 public/assets/webfonts
+public/tmp
+public/tmp/cache
+public/tmp/logs
+public/tmp/temp/
 vendor/
