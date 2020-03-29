@@ -1,0 +1,132 @@
+<!-- Admin PAGE Create HTM file  -->
+<div class="row">
+    <div class="col-12">
+        <form id="create_page" class="p-3 was-validated" action="{{ 'pagecreate' | alias }}" method="post" novalidate>
+            <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+            <input type="hidden" name="token" value="{{ @CSRF }}"/>
+            <div class="form-row">
+                <div class="col-md-9 p-2">
+                    <!-- TITLE page  -->
+                    <div class="card-header">
+                    <h5>Создание новой страницы </h5>   
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Заголовок</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                            </div>
+                            <input id="title" name="title" type="text" class="form-control slug"
+                                placeholder="Заголовок поста" minlength="4" maxlength="200"
+                                pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,:']+$" required>
+                            <div class="invalid-feedback">Буквы, цифры ! ? , . - :</div>
+                        </div>
+                    </div>
+                    <!-- SLAG page  -->
+                    <button type="button" class="btn btn-outline-info btn-sm mb-2"
+                        onclick="slugGenerate()">Генерировать слаг</button>
+                    <div class="form-group">
+                        <label for="slug">Ярлык для ссылки</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                            </div>
+                            <input id="slug" name="slug" type="text" class="form-control"
+                                placeholder="Ярлык для ссылки" minlength="4" maxlength="200"
+                                pattern="[A-Za-z0-9-]+" required>
+                            <div class="invalid-feedback">Только en буквы и цифры и дефис </div>
+                        </div>
+                    </div>
+                    <!-- Input TextArea Content PAGE  -->
+                    <div class="form-group">
+                        <textarea id="mytextarea" name="content"></textarea>
+                    </div>
+                </div> <!-- END COL -->
+                <!--*********** SIDEBAR ********************-->
+                <div id="admin_sidebar" class="col-md-3 p-3">
+                    <!--  =========  INPUT page TYPE ========  -->
+                    <div class="form-group">
+                        <label for="type">Тип поста</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-typo3"></i></span>
+                            </div>
+                            <select name="type" id="type">
+                                <option selected="selected" value="1">page</option>
+                                <option value="2">media</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  =========  INPUT page STATUS ========  -->
+                    <div class="form-group">
+                        <label for="status">Статус поста</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-usps"></i></span>
+                            </div>
+                            <select name="status" id="status">
+                                <option value='1'>Опубликовано</option>
+                                <option value='2'>Черновик</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  =========  INPUT page USER AUTHOR ========  -->
+                    <div class="form-group">
+                        <label for="user_id">Автор поста</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <select name="user_id" id="user_id">
+                                <repeat group="{{ @users }}"  key = "{{ @id }}"   value="{{ @user }}">
+                                    <check if="{{ @SESSION.user_login == @user.login }}">
+                                        <true>
+                                            <option  value = "{{ @user.id }}" selected>{{ @user.login }}</option>
+                                        </true>
+                                        <false>
+                                            <option  value = "{{ @user.id }}">{{ @user.login }}</option>
+                                        </false>
+                                    </check>
+                                </repeat>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- DATE Publish -->
+                    <div class="form-group">
+                        <label for="date">Дата публикации</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input id="page_date" type="date" class="form-control" name="page_date"
+                            value = "{{date('Y-m-d')}}"  required>
+                            <div class="invalid-feedback">data not format</div>
+                        </div>
+                    </div>
+						<!--  =========  INPUT PAGE CHANCHE DATE ========  -->
+					  <input name="changed" type="hidden" class="form-control"  value = "{{date('Y-m-d')}}">
+                    <!--  =========  INPUT POST THRUMB ========  -->
+                    <div class="form-group">
+                        <label for="thrumb">Thrumballs</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text"><i class="fas fa-thumbtack"></i></span>
+                                </div>
+                                <input name="thrumb" id="thrumb" type="text" class="form-control" readonly>
+                            </div>
+                    </div>
+                    <div class="form-group text-center mt-2">
+                        <img id="content_thrumb" class="img-thumbnail" src="" alt="" />
+                    </div>
+                    <button type="button" id="add_thrumb" class="mt-3 btn btn-sm btn-outline-success btn-block"><i
+                        class="fas fa-save"></i>
+                    Вставить миниатюру</button>
+                    <button type="submit" name="page_create" class="btn btn-sm btn-outline-success btn-block"><i
+                        class="fas fa-save"></i> Create page</button>
+                </div> <!-- END COL md-3 -->
+            </div> <!-- END FORM ROW -->
+        </form>
+        <!--End Add page-->
+    </div> <!-- END COL -->
+</div><!-- END  ROW -->
+<include href="admin/templates/media_modal.htm"/>

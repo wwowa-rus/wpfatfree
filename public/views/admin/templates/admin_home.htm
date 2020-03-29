@@ -1,0 +1,81 @@
+<!-- ****Admin Home php file*****  -->
+<div id="admin_body" class="container-fluid">
+    <div class="  row p-3">
+        <div class="col-md-3">
+            <div class="counter">
+                <div class="counter-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Users</a></h2>
+                <span class="counter-value">{{ @rec_count.users }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter purple">
+                <div class="counter-icon">
+                    <i class="fas fa-clipboard"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Posts</a></h2>
+                <span class="counter-value">{{ @rec_count.posts }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter blue">
+                <div class="counter-icon">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Pages</a></h2>
+                <span class="counter-value">{{ @rec_count.pages }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter orange">
+                <div class="counter-icon">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Categories</a></h2>
+                <span class="counter-value">{{ @rec_count.cats }}</span>
+            </div>
+        </div>
+    </div> <!-- **********   end row *************  -->
+    <div class="  row p-3">
+        <div class="col-md-3">
+            <div class="counter yellow">
+                <div class="counter-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Comments</a></h2>
+                <span class="counter-value">0</span>
+                <!-- <span class = "counter-value"> <?=$rec_count['comments']; ?></span> -->
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter red">
+                <div class="counter-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Images</a></h2>
+                <span class="counter-value">0</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter darkblue">
+                <div class="counter-icon">
+                    <i class="fab fa-mendeley"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Menu</a></h2>
+
+                <span class="counter-value">0</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter darkorange">
+                <div class="counter-icon">
+                    <i class="fad fa-star-half"></i>
+                </div>
+                <h2><a class="badgik" href="{{ @BASE }}">Empty</a></h2>
+                <span class="counter-value">0</span>
+            </div>
+        </div>
+    </div> <!-- end row -->
+</div><!-- end container-fluid -->

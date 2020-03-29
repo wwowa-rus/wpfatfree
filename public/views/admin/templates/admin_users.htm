@@ -1,0 +1,44 @@
+<!-- ***** Admin User All HTM file ****** -->
+<div class="row">
+    <div class="col-12">
+        <a href="{{ @ALIASES.usercreate }}" class=" m-2 btn btn-sm btn-outline-success">Новаый пользователь</a>
+    </div>
+</div>
+<div class="row">
+    <div class=" col-12 form-error bg-danger text-white mt-2 text-center">
+        <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="message {{ @msg.status }}">
+                {{ @msg.text | esc }}
+            </div>
+        </repeat>
+    </div>
+    <div class="table-responsive p-3 border">
+        <table class="table table-striped table-bordered table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Registered</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"><i class="far fa-edit"></th>
+                    <th scope="col"><i class="far fa-trash-alt"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <repeat group="{{ @users }}" key="{{ @id }}" value="{{ @user }}">
+                    <tr>
+                        <td>{{ @id }}</td>
+                        <td>{{ @user.login }}</td>
+                        <td>{{ @user.email }}</td>
+                        <td>{{ @user.registered }}</td>
+                        <td>{{ @status[@user.status] }}</td>
+                        <td><a href="{{ 'useredit', 'item =' . @id  | alias}}"><i class="far fa-edit"></a></td>
+                        <td><a href="{{ 'userdelete', 'item =' . @id  | alias}}"><i class="far fa-trash-alt"></a></td>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+        {{ @users[0] }}
+    </div><!-- END table-responsive -->
+</div> <!-- END ROW -->

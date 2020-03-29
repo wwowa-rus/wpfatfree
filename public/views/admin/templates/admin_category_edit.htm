@@ -1,0 +1,43 @@
+<!-- * Admin Categories Edit HTM File * -->
+<form method="post" class="p-2 was-validated" novalidate>
+    <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+    <input type="hidden" name="token" value="{{ @CSRF }}">
+    <!--  INPUT NAME CATEGORI  -->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend ">
+            <span class="input-group-text"><i class="fas fa-signature"></i></span>
+        </div>
+        <input name="name" id="name" type="text" class="form-control slug"
+            value="{{ @cat[0].name }}" placeholder="Имя категории" minlength="4" maxlength="200"
+            pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,:']+$" required>
+        <div class="invalid-feedback">*4 - 200 букв и цифр - ?!\.,:'</div>
+    </div>
+    <!-- BUTTON SLUG GENERATE -->
+    <button type="button" class="btn btn-primary btn-sm mb-2" onclick="slugGenerate()">Генерировать слаг</button>
+    <!-- INPUT SLUG -->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend ">
+            <span class="input-group-text"><i class="fas fa-suitcase-rolling"></i></span>
+        </div>
+        <input name="slug" id="slug" type="text" class="form-control"
+            value="{{ @cat[0].slug }}" placeholder="Слаг категории" minlength="4" maxlength="200"
+            pattern="^([a-z0-9-])+$" required>
+        <div class="invalid-feedback">* 4 - 200 букв, цифр и пробел</div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend ">
+            <span class="input-group-text"><i class="fas fa-address-book"></i></span>
+        </div>
+        <select  name="parent" id="parent" class="form-control">
+            <option value="0">нет</option>
+        </select>
+    </div>
+    <button type="submit" name="edit_cat" value = "editCat" class="btn btn-sm btn-outline-success btn-block"><i class="fas fa-save"></i>Редактировать</button>
+    <div class="form-error bg-danger text-white mt-2 text-center">
+        <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="message {{ @msg.status }}">
+                {{ @msg.text | esc }}
+            </div>
+        </repeat>
+    </div>
+</form>

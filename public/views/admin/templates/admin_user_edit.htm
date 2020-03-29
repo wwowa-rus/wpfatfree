@@ -1,0 +1,153 @@
+<!-- Admin User Edit HTM file  -->
+<form id="edit_user_form" class="p-3 was-validated" method="post" novalidate>
+    <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+    <input name="token" value="{{ @CSRF }}">
+    <!-- INPUT LOGIN -->
+    <div class="row form-group">
+        <label for="login" class="col-sm-2 col-form-label">Login</label>
+        <div class="col-sm-10">
+            <div class="alert alert-secondary py-1" role="alert">
+                {{ @user[0].login }}
+            </div>
+        </div>
+    </div>
+    <!-- INPUT nicename -->
+    <div class="row form-group">
+        <label for="nicename" class="col-sm-2 col-form-label">Nicename</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-injured"></i></span>
+                </div>
+                <input id="nicename" name="nicename" type="text" class="form-control form-control-sm" minlength="4"
+                    maxlength="20" value="{{ @user[0].nicename }}" pattern="[\p{L}0-9]+">
+                <div class="invalid-feedback">* 4 - 20 букв и цифр </div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_name -->
+    <div class="row form-group">
+        <label for="name" class="col-sm-2 col-form-label">Имя</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input id="name" name="name" type="text" class="form-control form-control-sm" minlength="2"
+                    maxlength="20" value="{{ @user[0].name }}" pattern="[\p{L}]+">
+                <div class="invalid-feedback">* 2 - 20 букв</div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_lastname -->
+    <div class="row form-group">
+        <label for="lastname" class="col-sm-2 col-form-label">Фамилия</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                </div>
+                <input id="lastname" name="lastname" type="text" class="form-control form-control-sm" minlength="2"
+                    maxlength="20" value="{{ @user[0].lastname }}" pattern="[\p{L}]+">
+                <div class="invalid-feedback">* 2 - 20 букв</div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_birthday -->
+    <div class="row form-group">
+        <label for="birthday" class="col-sm-2 col-form-label">Дата рождения</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                </div>
+                <input id="birthday" name="birthday" type="date" class="form-control form-control-sm"
+                    value="1000-12-01">
+                <div class="invalid-feedback">Дата формат 0000-12-08 </div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_url -->
+    <div class="row form-group">
+        <label for="url" class="col-sm-2 col-form-label">Сайт</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fab fa-internet-explorer"></i></span>
+                </div>
+                <input id=" url" name="url" type="url" class="form-control form-control-sm" value="{{ @user[0].url }}">
+                <div class="invalid-feedback">формат http://site.com </div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_status -->
+    <div class="row form-group">
+        <label for="status" class="col-sm-2 col-form-label">Статус</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                </div>
+                <select name="status" id="status" class="form-control form-control-sm">
+                    <check if="{{ @user[0].status == 1 }}">
+                        <true>
+                            <option selected value=1>admin</option>
+                            <option value=2>subscriber</option>
+                            <option value=3>user</option>
+                        </true>
+                    </check>
+                    <check if="{{ @user[0].status == 2 }}">
+                        <true>
+                            <option value=1>admin</option>
+                            <option selected value=2>subscriber</option>
+                            <option value=3>user</option>
+                        </true>
+                    </check>
+                    <check if="{{ @user[0].status == 3 }}">
+                        <true>
+                            <option value=1>admin</option>
+                            <option value=2>subscriber</option>
+                            <option selected value=3>user</option>
+                        </true>
+                    </check>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_email -->
+    <div class="row form-group">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <div class="alert alert-secondary py-1" role="alert">
+                {{ @user[0].email }}
+            </div>
+        </div>
+    </div>
+    <!-- INPUT us_pass -->
+    <div class="row form-group">
+        <label for="pass" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <div class="alert alert-secondary py-1" role="alert">
+                ******
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_registered -->
+    <div class="row form-group">
+        <label for="registered" class="col-sm-2 col-form-label">Дата регистрации</label>
+        <div class="col-sm-10">
+            <div class="alert alert-secondary py-1" role="alert">
+                {{ @user[0].registered }}
+            </div>
+        </div>
+    </div>
+    <button type="submit" name="edit_user" class="btn btn-sm btn-outline-success btn-block"><i class="far fa-save"></i>
+        Save Edit</button>
+    <div class="form-error bg-danger text-white mt-2 text-center">
+        <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="message {{ @msg.status }}">
+                {{ @msg.text | esc }}
+            </div>
+        </repeat>
+    </div>
+</form>

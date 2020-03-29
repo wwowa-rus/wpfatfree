@@ -1,0 +1,38 @@
+<!-- *****Theme HEADER TEMPLATE  FILE*****  -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ @SITE_DESCRIPTION }}">
+    <meta name="keywords" content="{{ @SITE_KEYWORDS }}">
+    <meta name="author" content="{{ @SITE_AUTHOR }}">
+    <title>{{ @SITE_NAME }}</title>
+    <!-- FAVICON -->
+	<link rel="icon" type="image/png" href="{{@BASE}}{{@ASSET_THEME}}img/math.png" />
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="{{@BASE}}{{@ASSET_THEME}}img/math.ico"> -->
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{@BASE}}{{@ASSET_SITE}}css/bootstrap.min.css">
+     <!-- FONT AWESOME Core CSS -->
+    <link rel="stylesheet" href="{{@BASE}}{{@ASSET_SITE}}css/all.min.css">
+     <!-- MAIN THEME  Core CSS -->
+    <link rel="stylesheet" href="{{@BASE}}{{@ASSET_THEME}}style.css">
+     <!--CODE SAMPLE PRISM highlight Core CSS -->
+    <link rel="stylesheet" href="{{@BASE}}{{@ASSET_THEME}}css/prism.css">
+</head>
+<body>
+    <header class="container-fluid">
+        <div class="row  p-2">
+            <div class="col-md-1 logo text-center">
+                <img src="{{@BASE}}{{@ASSET_THEME}}img/logo.png" alt="" height="80" width="80">
+            </div>
+            <div class="col-md-6 descr text-center">
+                <h2 class="mb-0">{{ @BLOGNAME  }}</h2>
+                <p>{{ @BLOGDESCRIPTION  }}</p>
+            </div>
+            <div class="col-md-5 adverst text-center text-md-right my-2">
+                {{ @widget_ins[0].value | RAW }}
+            </div>
+        </div>
+    </header>

@@ -1,0 +1,173 @@
+<!-- ****Admin Menu htm file*****  -->
+<!-- ============= menu_builder============== -->
+<div id="menu_builder" class="row">
+    <div class="col-12 p-2">
+        <h2 class="text-center">Редактор меню</h2>
+        <hr>
+    </div>
+</div>
+<!-- ============= END menu_builder============== -->
+<div id="menu_create" class="row p-2">
+    <div class="col-sm-6 p-4">
+        <!-- Список страниц -->
+        <div class="row">
+            <div class="col-12">
+                <p class="h5 text-center">Список страниц</p>
+                <div class="list-group">
+                    <repeat group="{{ @pages }}" value="{{ @page }}">
+                        <input type="checkbox" data-uid="{{ @page.id }}" name="" value="" id="Check{{ @page.id }}" />
+                        <label class="list-group-item p-1" for="Check{{ @page.id }}">
+                            <small>{{ @page.title }}</small></label>
+                    </repeat>
+                </div>
+            </div>
+        </div> <!-- END row -->
+        <div class="row">
+            <div class="col-4">
+                <button type="button" id="move_list" class=" mt-3 btn btn-sm  btn-block btn-primary">Создать</button>
+            </div>
+            <div class="col-4">
+                <button type="button" id="add_list" class=" mt-3 btn btn-sm  btn-block btn-primary">Добавить</button>
+            </div>
+            <div class="col-4">
+                <button type="button" id="clear_list" class=" mt-3 btn btn-sm  btn-block btn-primary">Снять
+                    выделение</button>
+            </div>
+        </div>
+        <!-- too cool -->
+    </div> <!-- END col-6 -->
+    <div class="col-sm-6">
+        <div class="success row" style="display:none;">
+            Thank you for signing up
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100" id="progress" style="width:0%">
+            </div>
+        </div>
+        <!-- FORM  MENUConstruct -->
+        <form id="menuConstruct" class="p-3" action="{{ 'menuconstruct' | alias }}" method="POST">
+            <!-- открытие меню из списка -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-primary" type="button" id="btn_menu_open" data-toggle="tooltip"
+                        title="открытие меню из списка"><i class="far fa-newspaper"></i> open</button>
+                </div>
+                <select class="form-control" name="menu_item" id="bd_menu_name">
+                    <repeat group="{{ @menu }}" value="{{ @menuItem }}">
+                        <option data-type="{{ @menuItem.type }}" value="{{ @menuItem.id }}">{{ @menuItem.name }}
+                        </option>
+                    </repeat>
+                </select>
+                <div class="input-group-append">
+                    <!-- создание имени нового меню -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_menu_modal"
+                        title="создание имени нового меню">
+                        <i class="fas fa-plus-square"></i> new
+                    </button>
+                </div>
+            </div>
+            <!-- DIV MENU OUT -->
+            <div class="container-fluid">
+                <div class="row menu_out ">
+                    <div class="col border" id="menu_out"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <!-- checkbox TYPE MENU -->
+                    <div class="form-group">
+                        <check if="{{ @type == 1 }}">
+                            <true>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="1" checked disabled>
+                                    <label class="form-check-label" for="inlineRadio1" title="Горизонтальное"><i
+                                            class="fas fa-arrows-alt-h"></i></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="2" disabled>
+                                    <label class="form-check-label" for="inlineRadio2" title="Вертикальное"><i
+                                            class="fas fa-arrows-alt-v"></i></label>
+                                </div>
+                            </true>
+                            <false>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="1" disabled>
+                                    <label class="form-check-label" for="inlineRadio1" title="Горизонтальное"><i
+                                            class="fas fa-arrows-alt-h"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="2" checked disabled>
+                                    <label class="form-check-label" for="inlineRadio2" title="Вертикальное"><i
+                                            class="fas fa-arrows-alt-v"></i></label>
+                                </div>
+                            </false>
+                        </check>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-check form-check-inline">
+                        <input id="menu_blog" name="menu_blog" type="checkbox" class="form-check-input item_create" checked>
+                        <label class="form-check-label" for="menu_blog" title="Добавить пункт меню 'блог'">блог</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input id="menu_contact" name="menu_contact" type="checkbox" class="form-check-input item_create" checked>
+                        <label class="form-check-label" for="menu_contact"
+                            title="Добавить пункт меню 'контакт'">контакт</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- сохранение меню под выбранным именем -->
+                <div class="col-6">
+                    <button type="button" class="btn btn-block btn-primary" type="button" id="btn_menu_save"
+                        data-toggle="tooltip" title="сохранение меню под выбранным именем"><i class="fas fa-save"></i>
+                        save</button>
+                </div>
+                <!-- создание файла меню из открытого меню -->
+                <div class="col-6">
+                    <button type="button" class="btn btn-block btn-primary" type="button" id="btn_menu_create"
+                        data-toggle="tooltip" title="создание файла меню из открытого меню"><i
+                            class="far fa-folder-open"></i>create</button>
+                </div>
+            </div>
+            <div class="input-group mt-3">
+                <input type="hidden" id="switch_route" name="switch_route" class="form-control">
+            </div>
+        </form>
+    </div> <!-- END col-6 -->
+</div> <!-- END  menu_create row -->
+<!-- modal windows New Menu -->
+<div class="modal fade" id="new_menu_modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="menu_name_new">Введите имя меню</label>
+                        <input type="text" name="menu_name_new" class="form-control" id="menu_name_new"
+                            placeholder="имя меню">
+                    </div>
+                    <div class="form-group">
+                        <label for="menu_type">Тип меню</label>
+                        <select name="menu_type" id="menu_type" class="custom-select">
+                            <option value=1 selected>Горизонтальное</option>
+                            <option value=2>Вертикальное</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_menu_new" class="btn btn-secondary">Создать меню</button>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,46 @@
+<!-- /*  SIDEBAR TEMPLATE HTM FILE    */ -->
+<div class="row px-4">
+    <div class="col-12 d-inline-flex flex-wrap justify-content-around login">
+        <check if="{{ @SESSION.user_login }}">
+            <true>
+                <a href="{{ @BASE }}{{ @ALIASES.logoff }}" class="btn btn-sm btn-outline-secondary flex-fill m-2" role="button">
+                    {{ @logout }}</a>
+                <a href="{{ @BASE }}{{ @ALIASES.admin }}" class="btn btn-sm btn-outline-secondary flex-fill m-2" role="button">
+                    {{ @console }}</a>
+            </true>
+            <false>
+                <a href="{{ @BASE }}{{ @ALIASES.login }}" class="btn btn-sm btn-outline-secondary flex-fill m-2" role="button">
+                    {{ @login }}</a>
+                <a href="{{ @BASE }}{{ @ALIASES.reg }}" class="btn btn-sm btn-outline-secondary flex-fill m-2" role="button">
+                    {{ @register }}</a>
+            </false>
+        </check>
+    </div>
+    <div class="col-12 widget1 my-4 text-center">
+        <div class="asideblock m-2">
+            {{ @widget_ins[1].value | RAW }}
+        </div>
+    </div>
+    <div class="col-12 widget2 text-center">
+        <div class="asideblock m-2">
+            {{ @widget_ins[2].value | RAW }}
+        </div>
+    </div>
+    <div class="col-12 widget3 mt-4">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <!--END COL -->
+</div>

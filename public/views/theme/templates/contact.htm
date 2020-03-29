@@ -1,0 +1,135 @@
+<!-- *CONTACT BLOG htm file  * -->
+<div class="row">
+    <div class="col-12">
+        <img src="{{@BASE}}{{@ASSET_THEME}}img/wchtml.jpg" alt="" class=" mb-4 img-fluid img-thumbnail shadow">
+    </div>
+    <div class="col-12">
+        <form id="contact_form" class="needs-validation bg-light p-3 mb-3 shadow" method="post"
+            enctype="multipart/form-data" action="{{ 'sendcont' | alias }}" role="form" novalidate>
+            <div class="messages"></div>
+            <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+            <input type="hidden" name="token" value="{{ @CSRF }}" />
+            <div class="form-row my-2">
+               <!--  **** INPUT THEME MAIL ***** -->    
+                <div class="col-12">
+                    <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" name="theme" class="form-control form-control-sm" placeholder="Тема письма *"
+                                 minlength="4" maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,:']+$" required>
+                                <div class="invalid-feedback">2 - 200 Буквы, цифры !?,.-:</div>
+                            </div>
+                        </div>
+                </div>
+                <!--  **** INPUT NAME ***** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user"></i></div>
+                            </div>
+                            <input type="text" name="name" class="form-control form-control-sm" placeholder="Имя *"
+                                pattern="^[a-zA-Zа-яА-Я]+$" minlength="2" maxlength="20" required>
+                            <div class="invalid-feedback">* 2 - 20 букв</div>
+                        </div>
+                    </div>
+                </div>
+                <!--  **** INPUT SURNAME ***** -->
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user-tie"></i></div>
+                        </div>
+                        <input type="text" name="surname" class="form-control  form-control-sm"
+                            pattern="^[a-zA-Zа-яА-Я]+$" minlength="2" maxlength="20" placeholder="Отчество"  required>
+                        <div class="invalid-feedback">2 - 20 букв</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <!--  **** INPUT EMAIL ***** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-at"></i></div>
+                            </div>
+                            <input type="email" name="email" class="form-control  form-control-sm"
+                                placeholder="example@basic.com *" required>
+                            <div class="invalid-feedback">Email вида example@basic.com</div>
+                        </div>
+                    </div>
+                </div>
+                <!--  **** INPUT PHONE ***** -->
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-phone-volume"></i></div>
+                        </div>
+                        <input type="text" name="phone" class="form-control  form-control-sm"
+                            pattern="^[0-9]+[0-9-]+[0-9]+$" placeholder="Телефон">
+                        <div class="invalid-feedback">Цифры и пробел</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea class="form-control  form-control-sm" name="message" id="message" rows="3"
+                            placeholder="Введите текст сообщения *" title="Текст сообщения" minlength="2"
+                            maxlength="255" required></textarea>
+                        <div class="invalid-feedback">Поле обязательно к заполнению</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <!--  **** INPUT ATACH FILE ***** -->
+                <div class="col-12 mb-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-paperclip"></i></div>
+                            </div>
+                            <div class="custom-file">
+                                <input id="add_name" name="file_name" type="file" class="custom-file-input"
+                                    pattern="[\p{L}\s0-9-_+]+\.[A-Za-z0-9]{2,4}">
+                                <label class="custom-file-label" for="file_name">Прикрепить файл</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!--  **** INPUT CHECKBOX ***** -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input name="check" class="form-check-input" type="checkbox" id="formCheck" required>
+                                <div class="invalid-feedback">Дайте свое согласие</div>
+                                <label class="form-check-label" for="formCheck">
+                                    Я даю своё согласие на обработку моих персональных данных, в соответствии
+                                    с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных».
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group"><small id="required_label" class="form-text text-muted">* Поля
+                                обязательные к заполнению</small>
+                            <button name="mail_btn" value="send_mail" class="btn btn-primary mt-2 btn-block"
+                                type="submit" disabled>Отправить
+                                сообщение</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-error bg-danger text-white mt-2 text-center w-100">
+        <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="message {{ @msg.status }}">
+                {{ @msg.text | esc }}
+            </div>
+        </repeat>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<!-- ***admin_layout shablon  HTM file***  -->
+<nav class="navbar  navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{'home'| alias}}"><i class="fas fa-user-shield"></i></a>
+    <ul class="nav  nav-fill">
+        <li class="nav-item">
+            <a class="nav-link active" href="#"><i class="fas fa-bell"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope-open-text"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{'home'| alias}}">Site</a>
+        </li>
+        <li class="nav-item dropdown dropleft">
+            <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false"><i class="fas fa-user-tie"></i></a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{'quickref'| alias}}">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{'logoff'| alias}}">LogOut</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div id="admin_body" class="container-fluid">
+    <!-- END in index -->
+    <div class="row">
+        <!-- END in index -->
+        <div class="col-2 bg-dark">
+            <nav class="navbar  navbar-dark bg-dark">
+                <ul class="navbar-nav  flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ @BASE }}/"><i class="fas fa-house-damage"></i><span
+                                class="d-none  d-sm-inline"> Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.admin }}"><i class="fas fa-atom"></i><span
+                                class="d-none  d-sm-inline"> Console</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.medialiball }}"><i
+                                class="fas fa-photo-video"></i> <span class="d-none  d-sm-inline"> MediaFile</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.postsall }}"><i
+                                class="fas fa-clipboard"></i><span class="d-none  d-sm-inline"> Post</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.pagesall }}"><i class="fas fa-scroll"></i><span
+                                class="d-none  d-sm-inline"> Page</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.catsall }}"><i
+                                class="fas fa-swatchbook"></i><span class="d-none  d-sm-inline"> Category</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.userall }}"><i
+                                class="fas fa-user-friends"></i><span class="d-none  d-sm-inline"> Users</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.menuall }}"><i class="far fa-compass"></i><span
+                                class="d-none  d-sm-inline"> Menu</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.settingall }}"><i class="fas fa-cog"></i><span
+                                class="d-none  d-sm-inline"> Setting</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{ @ALIASES.sitemap }}"><i class="fas fa-cog"></i><span
+                                class="d-none  d-sm-inline">SiteMap</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ @BASE }}{{@ALIASES.quickref}}"><i class="fas fa-link"></i><span
+                                class="d-none  d-sm-inline"> Links</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>

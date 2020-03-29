@@ -1,0 +1,118 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "645c40beee09648f9c206d8d5bb7f786",
+    "packages": [
+        {
+            "name": "bcosca/fatfree",
+            "version": "3.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bcosca/fatfree.git",
+                "reference": "495a97c9957a9edfbaea362927be6f3faa96fc52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bcosca/fatfree/zipball/495a97c9957a9edfbaea362927be6f3faa96fc52",
+                "reference": "495a97c9957a9edfbaea362927be6f3faa96fc52",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/base.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
+            "homepage": "http://fatfreeframework.com/",
+            "time": "2019-12-30T20:54:35+00:00"
+        },
+        {
+            "name": "ikkez/f3-flash",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-flash.git",
+                "reference": "3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-flash/zipball/3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6",
+                "reference": "3ba9ca1ddc80a54ff17a069c47c23e32d601c5d6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Add simple Flash Messages and Flash Keys to PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-middleware",
+            "keywords": [
+                "F3",
+                "fatfree",
+                "flash",
+                "session"
+            ],
+            "time": "2017-12-06T17:50:51+00:00"
+        },
+        {
+            "name": "ikkez/f3-mailer",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ikkez/f3-mailer.git",
+                "reference": "0cdcdb53b57ac59b9ed4f814b49af313555f196e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ikkez/f3-mailer/zipball/0cdcdb53b57ac59b9ed4f814b49af313555f196e",
+                "reference": "0cdcdb53b57ac59b9ed4f814b49af313555f196e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "SMTP plugin wrapper for PHP Fat-Free Framework",
+            "homepage": "https://github.com/ikkez/f3-mailer",
+            "keywords": [
+                "F3",
+                "email",
+                "fatfree",
+                "mail",
+                "smtp"
+            ],
+            "time": "2020-01-14T20:12:39+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

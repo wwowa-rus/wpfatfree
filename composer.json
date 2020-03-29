@@ -1,0 +1,19 @@
+{
+    "name": "wwowa/wpfatfree",
+    "description": "Your wpfatfree blog as wordpress",
+    "type": "project",
+    "require": {
+        "bcosca/fatfree": "^3.6",
+        "ikkez/f3-flash": "^1.0",
+        "ikkez/f3-mailer":"^1.2"
+    },
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Vladimir Lagutin",
+            "email": "lagutinwowa@rambler.ru",
+            "homepage": "http://www.baytheway.ru",
+            "role": "Developer"
+            }
+    ]
+}

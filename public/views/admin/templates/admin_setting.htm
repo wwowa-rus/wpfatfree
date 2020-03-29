@@ -1,0 +1,744 @@
+<!-- Admin SETTING HTM file  -->
+<div class="form-error bg-danger text-white mt-2 text-center">
+    <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+        <div class="message {{ @msg.status }}">
+            {{ @msg.text | esc }}
+        </div>
+    </repeat>
+</div>
+<form id="setting" class="p-3 was-validated" action="{{ 'settingsave' | alias }}" method="post" novalidate>
+    <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+    <input type="hidden" name="token" value="{{ @CSRF }}" />
+    <!-- **** Настройки сайта ****** -->
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            <h4>Настройки сайта</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="blog_charset">Кодировка</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code"></i></span>
+                            </div>
+                            <select name="blog_charset" class="form-control">
+                                <check if="{{ @setting['blog_charset'].value == 'UTF-8' }}">
+                                    <true>
+                                        <option selected="selected" value="UTF-8">UTF-8</option>
+                                        <option value="Windows-1251">Windows-1251</option>
+                                    </true>
+                                    <false>
+                                        <option value="UTF-8">UTF-8</option>
+                                        <option selected="selected" value="Windows-1251">Windows-1251</option>
+                                </check>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- **** TITLE POST **** -->
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                            </div>
+                            <input name="title" type="text" class="form-control" placeholder="Title" minlength="4"
+                                maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,]+$"
+                                value="{{ @setting['title'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры !?,.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <!-- **** Description ****  -->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="description" type="text" class="form-control" placeholder="description"
+                                minlength="4" maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,]+$"
+                                value="{{ @setting['description'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры !?,.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- **** keywords  **** -->
+                    <div class="form-group">
+                        <label for="keywords">Keywords</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input name="keywords" type="text" class="form-control" placeholder="keywords" minlength="4"
+                                maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s]+$"
+                                value="{{ @setting['keywords'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- **** Настройки Блога ****** -->
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            <h4>Настройки Блога</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-row my-2">
+                <!-- **** BLOG NAME **** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="blogname">Имя сайта</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                            </div>
+                            <input name="blogname" type="text" class="form-control" placeholder="Имя сайта"
+                                minlength="4" maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,]+$"
+                                value="{{ @setting['blogname'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры !?,.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- **** BLOG Description **** -->
+                    <div class="form-group">
+                        <label for="blogdescription">Описание сайта</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="blogdescription" type="text" class="form-control" placeholder="Описание сайта"
+                                minlength="4" maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s?!\.,]+$"
+                                value="{{ @setting['blogdescription'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры !?,.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <!-- **** Вывод страниц блога **** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="post_match">Колличество постов в блоге</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="post_match" type="number" class="form-control" min="1"
+                                placeholder="Колличество постов в блоге" value="{{ @setting['post_match'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- **** Вывод FRONT PAGE <  --  > BLOG **** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="is_home">Отображение главной страницы</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code"></i></span>
+                            </div>
+                            <select name="is_home" class="form-control">
+                                <check if="{{ @setting['is_home'].value == 'home' }}">
+                                    <true>
+                                        <option selected="selected" value="home">Home</option>
+                                        <option value="blog">Blog</option>
+                                    </true>
+                                    <false>
+                                        <option value="home">Home</option>
+                                        <option selected="selected" value="blog">Blog</option>
+                                </check>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CHOOSE FILE LOGO -->
+            <div class="row no-gutters border shadow">
+                <div class="col-md-3 text-center pt-3">
+                    <h5 class="card-title">Логотип</h5>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="{{@BASE}}{{@ASSET_THEME}}img/logo.png" alt="" height="80" width="80">
+                </div>
+                <div class="col-md-6 p-3">
+                    <p class="card-text"> Изображение логотипа должно находится в папке theme/img и иметь имя logo.png.
+                        Размер 80х80. В противном случае может понадобится корректировка кода.</p>
+                </div>
+            </div>
+            <!-- Настройки блоков виджетов -->
+            <div class="form-row border my-4">
+                <div class="col-12">
+                    <h5 class="card-title">Блок в шапке сайта</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['headblock_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="headblock_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="headblock_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="headblock_show"> Показать
+                            </label>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="col-12">
+                    <h5 class="card-title">Блок №1 в сайдбаре</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['sidebar1_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="sidebar1_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="sidebar1_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="sidebar1_show"> Показать
+                            </label>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="col-12">
+                    <h5 class="card-title">Блок №2 в шапке сайта</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['sidebar2_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="sidebar2_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="sidebar2_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="sidebar2_show"> Показать
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-sm btn-block m-3" data-toggle="modal"
+                    data-target="#widgetModal">
+                    Настроить блоки виджетов
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ----------    Настройки главной страницы------------ -->
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            <h4>Настройки главной страницы</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-row my-2">
+                <div class="col-md-12">
+                    <h5 class="card-title">Настройки слайдера</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['wslid_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="wslid_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="wslid_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="wslid_show"> Показать виджет
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wslid_cat">Категория</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code-branch"></i></span>
+                            </div>
+                            <select name="wslid_cat" class="form-control">
+                                <repeat group="{{ @cats }}" value="{{ @cat }}">
+                                    <check if="{{ @cat.id ==  @setting['wslid_cat'].value }}">
+                                        <true>
+                                            <option selected='selected' value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </true>
+                                        <false>
+                                            <option value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </false>
+                                    </check>
+                                </repeat>
+                            </select>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <check if="{{ @setting['wslid_allcat'].value ==  'on' }}">
+                                        <true>
+                                            <input name="wslid_allcat" type="checkbox" checked>
+                                        </true>
+                                        <false>
+                                            <input name="wslid_allcat" type="checkbox">
+                                        </false>
+                                    </check>
+                                    <label class="form-check-label pl-2" for="wslid_allcat"> Все категории</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wslid_ex">Длина цитаты</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="wslid_ex" type="number" class="form-control" min="20"
+                                placeholder="Длина цитаты" value="{{ @setting['wslid_ex'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-row my-2">
+                <div class="col-md-12">
+                    <h5 class="card-title">Настройки виджета категорий</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['wscat_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="wscat_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="wscat_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="wscat_show"> Показать виджет
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wscat1">Категория</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code-branch"></i></span>
+                            </div>
+                            <select name="wscat1" class="form-control">
+                                <repeat group="{{ @cats }}" value="{{ @cat }}">
+                                    <check if="{{ @cat.id ==  @setting['wscat1'].value }}">
+                                        <true>
+                                            <option selected='selected' value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </true>
+                                        <false>
+                                            <option value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </false>
+                                    </check>
+                                </repeat>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wscat2">Категория</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code-branch"></i></span>
+                            </div>
+                            <select name="wscat2" class="form-control">
+                                <repeat group="{{ @cats }}" value="{{ @cat }}">
+                                    <check if="{{ @cat.id ==  @setting['wscat2'].value }}">
+                                        <true>
+                                            <option selected='selected' value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </true>
+                                        <false>
+                                            <option value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </false>
+                                    </check>
+                                </repeat>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wscat_num">Число постов</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="wscat_num" type="number" class="form-control" min="4" max="8" step="2"
+                                placeholder="Колличество постов в блоге" value="{{ @setting['wscat_num'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wscat_ex">Длина цитаты</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="wscat_ex" type="number" class="form-control" min="20"
+                                placeholder="Длина цитаты" value="{{ @setting['wscat_ex'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-md-12">
+                    <h5 class="card-title">Настройки виджета публикаций</h5>
+                    <div class="form-group">
+                        <div class="form-check  form-check-inline mb-2">
+                            <check if="{{ @setting['wrec_show'].value ==  'on' }}">
+                                <true>
+                                    <input name="wrec_show" class="form-check-input" type="checkbox" checked>
+                                </true>
+                                <false>
+                                    <input name="wrec_show" class="form-check-input" type="checkbox">
+                                </false>
+                            </check>
+                            <label class="form-check-label" for="wrec_show"> Показать виджет
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wrec_cat">Категория</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code-branch"></i></span>
+                            </div>
+                            <select name="wrec_cat" class="form-control">
+                                <repeat group="{{ @cats }}" value="{{ @cat }}">
+                                    <check if="{{ @cat.id ==  @setting['wrec_cat'].value }}">
+                                        <true>
+                                            <option selected='selected' value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </true>
+                                        <false>
+                                            <option value="{{ @cat.id }}">{{ @cat.name }}</option>
+                                        </false>
+                                    </check>
+                                </repeat>
+                            </select>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <check if="{{ @setting['wrec_allcat'].value ==  'on' }}">
+                                        <true>
+                                            <input name="wrec_allcat" type="checkbox" checked>
+                                        </true>
+                                        <false>
+                                            <input name="wrec_allcat" type="checkbox">
+                                        </false>
+                                    </check>
+                                    <label class="form-check-label pl-2" for="wrec_allcat"> Все категории</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wrec_ex">Длина цитаты</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-prescription"></i></span>
+                            </div>
+                            <input name="wrec_ex" type="number" class="form-control" min="20" placeholder="Длина цитаты"
+                                value="{{ @setting['wrec_ex'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------    Настройки почты ------------ -->
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            <h4>Настройки почты</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <!--  ****  EMAIL ADMIN ********** -->
+                    <div class="form-group">
+                        <label for="admin_email">Email администратора</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                            </div>
+                            <input name="admin_email" type="email" placeholder="example@mail.com" class="form-control"
+                                value="{{ @setting['admin_email'].value }}">
+                            <div class="invalid-feedback">email вида example@mail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!--  ****  EMAIL SMTP ********** -->
+                   <div class="form-group">
+                        <label for="smtp_email">SMTP Email </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-envelope-open"></i></span>
+                            </div>
+                            <input name="smtp_email" type="text" placeholder="smtp email" class="form-control"
+                               pattern="^smtp\.[а-яА-Яa-z0-9-]+\.[а-яА-Яa-zA-Z]{2,3}$"  value="{{ @setting['smtp_email'].value }}">
+                            <div class="invalid-feedback">email вида smtp.example.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <!--  ****  SMTP Порт ********** -->
+                    <div class="form-group">
+                        <label for="smtp_port">SMTP Порт</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-megaport"></i></span>
+                            </div>
+                            <input name="smtp_port" type="text" pattern="^[0-9]+$" placeholder="smtp port"
+                                class="form-control" value="{{ @setting['smtp_port'].value }}">
+                            <div class="invalid-feedback">Только цифры</div>
+                        </div>
+                    </div>
+                </div>
+                <!--  **** TLS/SSL********** -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="tls_ssl">TLS/SSL</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-code-branch"></i></span>
+                            </div>
+                            <select name="tls_ssl" class="form-control">
+                                <check if="{{ @setting['tls_ssl'].value == 'tls' }}">
+                                    <true>
+                                        <option selected="selected" value="tls">TLS</option>
+                                        <option value="ssl">SSL</option>
+                                    </true>
+                                    <false>
+                                        <option value="tls">TLS</option>
+                                        <option selected="selected" value="ssl">SSL</option>
+                                    </false>
+                                </check>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!--  ****  SMTP password ********** -->
+            <div class="form-group">
+                <label for="smtp_pass">SMTP пароль</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user-lock"></i></i></span>
+                    </div>
+                    <input name="smtp_pass" id="smtp_pass" type="password" class="form-control"
+                        placeholder="SMTP password" minlength="4" maxlength="15" pattern="[A-Za-z0-9;_!#@]+">
+                    <div class="invalid-feedback">* 4 - 15 enEN букв и цифр, символы ;_!#@</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check mb-2">
+                    <input name="save_smtpass" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="save_smtpass">
+                        Перезаписать пароль
+                    </label>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <!-- ----------    Настройки администратора ------------ -->
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            <h4>Настройки администратора</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="debug">Debug</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-braille"></i></span>
+                            </div>
+                            <select name="debug" class="form-control">
+                                <check if="{{ @setting['debug'].value == '0' }}">
+                                    <true>
+                                        <option selected="selected" value=0>0</option>
+                                        <option value=1>1</option>
+                                        <option value=2>2</option>
+                                        <option value=3>3</option>
+                                    </true>
+                                </check>
+                                <check if="{{ @setting['debug'].value == '1' }}">
+                                    <true>
+                                        <option value=0>0</option>
+                                        <option selected="selected" value=1>1</option>
+                                        <option value=2>2</option>
+                                        <option value=3>3</option>
+                                    </true>
+                                </check>
+                                <check if="{{ @setting['debug'].value == '2' }}">
+                                    <true>
+                                        <option value=0>0</option>
+                                        <option value=1>1</option>
+                                        <option selected="selected" value=2>2</option>
+                                        <option value=3>3</option>
+                                    </true>
+                                </check>
+                                <check if="{{ @setting['debug'].value == '3' }}">
+                                    <true>
+                                        <option value=0>0</option>
+                                        <option value=1>1</option>
+                                        <option value=2>2</option>
+                                        <option selected="selected" value=3>3</option>
+                                    </true>
+                                </check>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cache">CACHE</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-boxes"></i></span>
+                            </div>
+                            <select name="cache" class="form-control">
+                                <check if="{{ @setting['cache'].value == 'TRUE' }}">
+                                    <true>
+                                        <option selected="selected" value='TRUE'>TRUE</option>
+                                        <option value='FALSE '>FALSE</option>
+                                    </true>
+                                    <false>
+                                        <option value='TRUE'>TRUE</option>
+                                        <option selected="selected" value='FALSE '>FALSE</option>
+                                    </false>
+                                </check>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="app_name">App Name</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-asymmetrik"></i></span>
+                            </div>
+                            <input name="app_name" type="text" class="form-control" placeholder="App Name" minlength="4"
+                                maxlength="200" pattern="^[a-zA-Zа-яА-Я0-9\s]+$"
+                                value="{{ @setting['app_name'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="app_version">App Version</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-cogs"></i></span>
+                            </div>
+                            <input name="app_version" type="text" class="form-control" placeholder="App Version"
+                                minlength="2" maxlength="20" pattern="^[\d]+.[\d]+$"
+                                value="{{ @setting['app_version'].value }}">
+                            <div class="invalid-feedback">Буквы, цифры </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="author">Автор</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-asymmetrik"></i></span>
+                            </div>
+                            <input name="author" type="text" class="form-control" placeholder="author" minlength="4"
+                                maxlength="200" pattern="^[a-zA-Zа-яА-Я\s]+$" value="{{ @setting['author'].value }}">
+                            <div class="invalid-feedback"> Только буквы</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nz">NZ</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-cogs"></i></span>
+                            </div>
+                            <input name="nz" type="text" class="form-control" placeholder="----" minlength="2"
+                                maxlength="20" pattern="^[\d]+.[\d]+$" value="" disabled>
+                            <div class="invalid-feedback">Буквы, цифры </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button name="setting" value="setting" type="submit" class="btn_submit btn-outline-primary btn btn-sm btn-block">
+        Сохранить</button>
+</form>
+<!-- Модальная форма настройки виджетов шапки и сайдбара -->
+<div class="modal fade" id="widgetModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Настройка виджетов</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- modal form setting widget -->
+                <form class="p-3 was-validated" action="{{ 'widgetsave' | alias }}" method="post" novalidate>
+                    <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+                    <input type="hidden" name="token" value="{{ @CSRF }}" />
+                    <div class="form-group">
+                        <label for="widget_header">Настройки виджета шапки</label>
+                        <textarea name="widget_header" class="form-control" rows="6">{{ @widget[0].value }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="widget_sidebar1">Настройки виджета сайдбар №1</label>
+                        <textarea name="widget_sidebar1" class="form-control" rows="6">{{ @widget[1].value }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="widget_sidebar2">Настройки виджета сайдбар №2</label>
+                        <textarea name="widget_sidebar2" class="form-control" rows="6">{{ @widget[2].value }}</textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

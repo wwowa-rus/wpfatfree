@@ -1,0 +1,78 @@
+<!-- MEDIA MODAL HTM FILE -->
+<div class="modal fade" id="img_insert" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <!-- Modal Heading amd Close Button -->
+            <div class="modal-header">
+                <h5 class="modal-title">Please Select an Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Content - Your images will go here. -->
+            <div class="modal-body image_select">
+                    <div class="row">
+                        <div id="media_lib" class="col-md-9">
+                            <repeat group="{{ @images }}" key="{{ @id }}" value="{{ @image }}">
+                                <check if="{{ @image.img_type == 0 }}">
+                                    <true>
+                                        <img class="img-thumbnail m-1" src="{{ @BASE }}/{{@UPLOADS }}{{ @image.name }}"
+                                            alt="{{ @image.alt }}" title="{{ @image.title }}" data-id="{{ @id }}"
+                                            data-thrumb="{{ @image.img_type }}" height="61" width="100">
+                                    </true>
+                                    <false>
+                                        <img class="m-1" src="{{ @BASE }}/{{@UPLOADS }}{{ @image.name }}"
+                                            alt="{{ @image.alt }}" title="{{ @image.title }}" data-id="{{ @id }}"
+                                            data-thrumb="{{ @image.img_type }}" height="61" width="100">
+                                    </false>
+                                </check>
+                            </repeat>
+                        </div>
+                        <div class="col-md-3 border p-3 bg-warning">
+                            <div class="img_trumb text-center">
+                                <img id="image_thrumb" class="img-thumbnail" src=""/>
+                            </div>
+                            <!--  =========  INPUT POST IMAGE SIZE ========  -->
+                            <div class="form-group">
+                                <label for="image_size">Размер рисунка</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fab fa-typo3"></i></span>
+                                    </div>
+                                    <select id="image_size">
+                                        <option selected="selected" value="1">большой</option>
+                                        <option value="2">средний</option>
+                                        <option value="3">миниатюра</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <p>Name <span class="img_name badge badge-light">**</span></p>
+                            <p>Width <span class="img_width badge badge-light">**</span></p>
+                            <p>Heigth <span class="img_height badge badge-light">**</span></p>
+                            </div>
+                            <!-- textarea TITLE -->
+                            <div class="form-group">
+                                <label for="info_title">Title</label>
+                                <textarea id="info_title" class="form-control" minlength="4" maxlength="255"
+                                    placeholder="title" readonly></textarea>
+                                <div class="invalid-feedback">Please enter a title image. 0 - 255 char.</div>
+                            </div>
+                            <!-- textarea ALT -->
+                            <div class="form-group">
+                                <label for="info_alt">Alt</label>
+                                <textarea id="info_alt" class="form-control" minlength="4" placeholder="alt"
+                                    readonly></textarea>
+                                <div class="invalid-feedback">Please enter a alt image. 0 - 255 char.</div>
+                            </div>
+                            <button type="button" id="insert_image" class="btn btn-sm btn-outline-success btn-block"
+                                disabled><i class="fas fa-save"></i> Вставить рисунок</button>
+                            <button type="button" id="insert_thrumb" class="btn btn-sm btn-outline-success btn-block"
+                                disabled><i class="fas fa-save"></i> Вставить миниатюру</button>
+                        </div><!-- END col-md-3 -->
+                    </div>
+
+            </div><!-- /end modal-body -->
+        </div> <!-- /end of modal-content -->
+    </div> <!-- /end of modal-dialog -->
+</div> <!-- /end of modal -->

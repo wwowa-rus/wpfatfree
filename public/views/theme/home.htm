@@ -1,0 +1,17 @@
+<!--  HOME FRONT PAGE THEME TEMPLATE FILE  -->
+<include href="theme/header.htm" />
+<include href="theme/navbar.htm" />
+<!-- Page Content -->
+<div id="site_body" class="container">
+    <div class="row p-1">
+        <!-- Blog Entries Column -->
+        <div class="col-md-9">
+            <include href="{{@view}}" />
+        </div>
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-3 shadow p-2">
+            <include href="theme/sidebar.htm" />
+        </div>
+    </div> <!-- END row -->
+</div> <!-- END container -->
+<include href="theme/footer.htm" />

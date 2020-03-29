@@ -1,0 +1,203 @@
+@import 'variable';
+
+body {
+  font-size: 1.1rem;
+  background-color: $site_background;
+  color: $site_color;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.btn:focus,
+.btn.focus {
+  box-shadow: none !important;
+}
+
+header {
+  p {
+    margin: $pd_mg1;
+  }
+}
+
+#site_body {
+  background-color: rgb(240, 230, 230);
+}
+/* ************* NAVBAR ******** */
+nav{
+ &.navbar{
+padding-top: 1px;
+padding-bottom: 1px;
+ }
+a.nav-link{
+  padding: 3px;
+}
+}
+
+/* ************* SIDEBAR */
+
+  .login, .widget3{
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+// form login_modal
+/* .reg_messages{
+} */
+/* ********** LOGIN FORM *******************/
+#login_form,
+#reg_form {
+  form {
+    background-color: rgb(161, 217, 240);
+    padding: $pd_mg1;
+    box-shadow: 0 0 10px #505050;
+    border-radius: 5px;
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .form-icon {
+    color: #FF5B61;
+    font-size: 80px;
+    text-align: center;
+    line-height: 100px;
+    text-shadow: 5px 5px 3px #0E7886;
+  }
+
+  .heading {
+    color: #0E7886;
+    margin: 0 0 5px 0;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .btn {
+    color: #fff;
+    background-color: #FF5B61;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .btn:focus,
+  .btn:hover {
+    letter-spacing: 3px;
+    text-shadow: 0 0 5px #0E7886;
+    box-shadow: 0 0 0 5px #fff inset, 0 0 5px #555;
+  }
+}
+#reg_modal {
+  .modal-content {
+    position: relative;
+    border: 3px solid rgb(219, 46, 46);
+  }
+
+  .form-result-success {
+    border: 3px solid rgb(11, 114, 16);
+  }
+}
+footer {
+  .card {
+    border: none !important;
+  }
+  p {
+    margin: $pd_mg1;
+  }
+  .card-header {
+    border-bottom: 2px solid white;
+  }
+  .down {
+    background: linear-gradient(top, #0a0a0b 0%, #3d3d5c 100%);
+  }
+}
+// ************************************************************************
+/* WIDGET FRONT PAGE */
+.widget_resent,
+.widget_slider,
+.widget_cat {
+  a{
+    color:rgb(54, 148, 185);
+  }
+  p {
+     font-size: 1.0rem;
+    margin-bottom: 0.1rem;
+    line-height: 1.4rem;
+  span{
+font-size: 0.9rem;
+
+  }
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 2px dashed rgb(253, 251, 251);
+    background: rgb(117, 104, 104);
+  }
+}
+
+.widget_slider{
+   .carousel-caption{
+    background-color: rgba(132, 132, 145, 0.5);
+   }
+  }
+
+.widget_cat{
+  .litle{
+    box-shadow: 0 10px 6px -6px #777;
+  }
+}
+.widget_resent {
+  .widget_big {
+    border: 1px solid rgb(170, 172, 187);
+    p {
+      padding: 0.5rem;
+      background-color: rgb(250, 252, 250);
+    }
+  }
+  .litle{
+    box-shadow:
+    0 1px 4px rgba(0, 0, 0, .3),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+  }
+  .trumb_big {
+    position: relative;
+  }
+  .trumb_big {
+    .meta {
+      background-color: rgba(4, 4, 19, 0.4);
+      color: aliceblue;
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0.3rem;
+      left: 20;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0px;
+    }
+  }
+}
+// adverst block header sidebar
+.widget1, .widget2{
+  .asideblock{
+    img{
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);    }
+  }
+}
+
+
+
+
+/* Button Up-Down Scroll Site */
+.scroll_btn {
+  // width:40px;
+  //  height:40px;
+  opacity: 0.3;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: none;
+
+}

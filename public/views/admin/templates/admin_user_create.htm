@@ -1,0 +1,82 @@
+<!-- *** Admin User Create HTM file **** -->
+<form id="create_user" class="p-3 was-validated" action="" method="post" novalidate>
+    <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+    <input type="hidden" name="token" value="{{ @CSRF }}">
+    <div class="row form-group">
+        <label for="login" class="col-sm-2 col-form-label">Login</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-check"></i></span>
+                </div>
+                <input id="login" type="text" class="form-control" name="login" placeholder="login" minlength="4"
+                    maxlength="15" pattern="^([a-z0-9])+$" required>
+                <div class="invalid-feedback">* 4 - 15 en букв и цифр </div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label for="status" class="col-sm-2 col-form-label">Роль</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                </div>
+                <select name="status" id="status">
+                    <option value="1">admin</option>
+                    <option value="2">subscriber</option>
+                    <option selected value="3">user</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open-text"></i></span>
+                </div>
+                <input id="email" name="email" type="email" placeholder="example@mail.com" class="form-control"
+                    required>
+                <div class="invalid-feedback">email вида example@mail.com</div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label for="pass" class="col-sm-2 col-form-label">Пароль</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock-alt"></i></span>
+                </div>
+                <input id="pass" name="pass" type="password" class="form-control" placeholder="Password" minlength="4"
+                    maxlength="15" pattern="[A-Za-z0-9;_!#@]+" required>
+                <div class="invalid-feedback">* 4 - 15 enEN букв и цифр, символы ;_!#@ </div>
+            </div>
+        </div>
+    </div>
+    <!-- INPUT user_birthday -->
+    <div class="row form-group">
+        <label for="registered" class="col-sm-2 col-form-label">Дата</label>
+        <div class="col-sm-10">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                </div>
+                <input id="registered" name="registered" type="date" class="form-control form-control-sm"
+                    value="{{date('Y-m-d')}}" readonly>
+                <div class="invalid-feedback">Дата формат 0000-12-08 </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" name="user_create" value="user_create" class="btn btn-sm btn-outline-success btn-block"><i
+            class="fas fa-user-plus"></i> Create User</button>
+    <div class="form-error bg-danger text-white mt-2 text-center">
+        <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="message {{ @msg.status }}">
+                {{ @msg.text | esc }}
+            </div>
+        </repeat>
+    </div>
+</form>

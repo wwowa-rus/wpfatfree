@@ -1,0 +1,23 @@
+<!-- **** Navbar php File **** --> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="{{ @BASE }}{{'frontpage'| alias }}"><i class="fas fa-house-damage"></i></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_content">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="nav_content">
+<ul class="navbar-nav mr-auto">
+<li  class="nav-item">
+<a class="nav-link" href="{{ 'blog', 'item = 1 '| alias }}">{{@blog}}</a>
+</li>
+<li id ="list_1" class="nav-item">
+<a class="nav-link" href="{{ 'page', 'item =1'| alias }}">Страница</a> 
+</li> 
+<li  class="nav-item">
+<a class="nav-link" href="{{ @BASE }}{{ 'contact'| alias }}">contact</a>
+</li>
+</ul>
+<form class="form-inline my-2 my-lg-0">
+<input class="form-control form-control-sm mr-sm-2" type="search" placeholder="{{ @search }}">
+<button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">{{ @search }}</button>
+</form>
+</div></nav>

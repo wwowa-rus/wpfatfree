@@ -1,0 +1,209 @@
+/* COLORS */
+/* MARGIN_PADDING */
+body {
+  /* font-size: 1.1rem; */
+  background-color: #f8f1f1;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.btn:focus,
+.btn.focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+header p {
+  margin: 0.3rem;
+}
+
+#site_body {
+  background-color: #f0e6e6;
+}
+
+/* ************* NAVBAR ******** */
+nav.navbar {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+nav a.nav-link {
+  padding: 3px;
+}
+
+/* ************* SIDEBAR */
+.login, .widget3 {
+  -webkit-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px white;
+          box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px white;
+}
+
+/* .reg_messages{
+} */
+/* ********** LOGIN FORM *******************/
+#login_form form,
+#reg_form form {
+  background-color: #a1d9f0;
+  padding: 0.3rem;
+  -webkit-box-shadow: 0 0 10px #505050;
+          box-shadow: 0 0 10px #505050;
+  border-radius: 5px;
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#login_form .form-icon,
+#reg_form .form-icon {
+  color: #FF5B61;
+  font-size: 80px;
+  text-align: center;
+  line-height: 100px;
+  text-shadow: 5px 5px 3px #0E7886;
+}
+
+#login_form .heading,
+#reg_form .heading {
+  color: #0E7886;
+  margin: 0 0 5px 0;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#login_form .btn,
+#reg_form .btn {
+  color: #fff;
+  background-color: #FF5B61;
+  font-size: 18px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#login_form .btn:focus,
+#login_form .btn:hover,
+#reg_form .btn:focus,
+#reg_form .btn:hover {
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px #0E7886;
+  -webkit-box-shadow: 0 0 0 5px #fff inset, 0 0 5px #555;
+          box-shadow: 0 0 0 5px #fff inset, 0 0 5px #555;
+}
+
+#reg_modal .modal-content {
+  position: relative;
+  border: 3px solid #db2e2e;
+}
+
+#reg_modal .form-result-success {
+  border: 3px solid #0b7210;
+}
+
+footer .card {
+  border: none !important;
+}
+
+footer p {
+  margin: 0.3rem;
+}
+
+footer .card-header {
+  border-bottom: 2px solid white;
+}
+
+footer .down {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0a0a0b), to(#3d3d5c));
+  background: linear-gradient(top, #0a0a0b 0%, #3d3d5c 100%);
+}
+
+/* WIDGET FRONT PAGE */
+.widget_resent a,
+.widget_slider a,
+.widget_cat a {
+  color: #3694b9;
+}
+
+.widget_resent p,
+.widget_slider p,
+.widget_cat p {
+  font-size: 1.0rem;
+  margin-bottom: 0.1rem;
+  line-height: 1.4rem;
+}
+
+.widget_resent p span,
+.widget_slider p span,
+.widget_cat p span {
+  font-size: 0.9rem;
+}
+
+.widget_resent hr,
+.widget_slider hr,
+.widget_cat hr {
+  border: 0;
+  border-bottom: 2px dashed #fdfbfb;
+  background: #756868;
+}
+
+.widget_slider .carousel-caption {
+  background-color: rgba(132, 132, 145, 0.5);
+}
+
+.widget_cat .litle {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+}
+
+.widget_resent .widget_big {
+  border: 1px solid #aaacbb;
+}
+
+.widget_resent .widget_big p {
+  padding: 0.5rem;
+  background-color: #fafcfa;
+}
+
+.widget_resent .litle {
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.widget_resent .trumb_big {
+  position: relative;
+}
+
+.widget_resent .trumb_big .meta {
+  background-color: rgba(4, 4, 19, 0.4);
+  color: aliceblue;
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0.3rem;
+  left: 20;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 0px;
+}
+
+.widget1 .asideblock img, .widget2 .asideblock img {
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* Button Up-Down Scroll Site */
+.scroll_btn {
+  opacity: 0.3;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: none;
+}
+
+/* **********  MEDIALIBRARY ***************** */
+.img_trumb {
+  border: 3px solid blue;
+  min-width: 100px;
+  min-height: 100px;
+}

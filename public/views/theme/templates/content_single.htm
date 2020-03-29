@@ -1,0 +1,16 @@
+<!-- Loop post SINGLE POST htm file   -->
+<div id="blog_post" class="card  mb-4">
+    <h4 class="card-header pb-2">{{ @blogpost[0].title }}</h4>
+    <div class="card-body">
+        <a class="d-block text-center" href="#">
+            <img class="img-fluid" src="{{ @BASE }}/{{@UPLOADS }}{{@blogpost[0].thrumb }}" alt="">
+        </a>
+        <hr>
+        <span class="pl-2 pt-3 card-text">{{ @blogpost[0].content|RAW }}</span>
+    </div> <!-- card-body -->
+    <div class="card-footer">
+        <span class="mr-1"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ @blogpost[0].date }}</span>
+        <span class="mr-1"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;{{ @blogpost[0].author }}</span>
+        <span class="mr-1"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;{{ @blogpost[0].cat }}</span>
+    </div>
+</div> <!-- END card  -->

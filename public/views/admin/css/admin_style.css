@@ -1,0 +1,307 @@
+body, html {
+    min-height: 100%;
+}
+
+#admin_body {
+    background-color: beige;
+}
+
+/* HOME ADMIN PANEL */
+#admin_body a.badgik {
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em 0.2em rgb(97, 95, 95);
+    color: rgb(76, 97, 117);
+}
+
+#admin_body .counter {
+    color: #fff;
+    background: linear-gradient(30deg, #509C3A, #97C136, #509C3A);
+    font-family: 'Bitter', serif;
+    text-align: center;
+    max-width: 11rem;
+    height: 15rem;
+    padding: 1.5rem 0 2rem;
+    margin: 0 auto;
+    position: relative;
+    -webkit-clip-path: polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0% 15%);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0% 15%);
+}
+
+#admin_body .counter .counter-icon {
+    font-size: 40px;
+    margin: 0 0 90px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#admin_body .counter:hover .counter-icon {
+    text-shadow: 0 0 3px #000;
+    -webkit-transform: rotateX(360deg) rotateY(360deg);
+    transform: rotateX(360deg) rotateY(360deg);
+}
+
+#admin_body .counter .counter-value {
+    font-size: 2rem;
+    line-height: 1rem;
+    text-shadow: 0 0 3px #000;
+    display: block;
+    margin: 0 0 0.5rem;
+}
+
+#admin_body .counter h2 {
+    color: #509C3A;
+    background: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 0 0 10px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+#admin_body .counter.blue {
+    background: linear-gradient(30deg, #01A3A4, #00D2D3, #01A3A4);
+}
+
+#admin_body .counter.blue h3 {
+    color: #01A3A4;
+}
+
+#admin_body .counter.purple {
+    background: linear-gradient(30deg, #741978, #B41D8E, #741978);
+}
+
+#admin_body .counter.purple h3 {
+    color: #741978;
+}
+
+#admin_body .counter.orange {
+    background: linear-gradient(30deg, #D46122, #FCAF16, #D46122);
+}
+
+#admin_body .counter.orange h3 {
+    color: #D46122;
+}
+
+#admin_body .counter.red {
+    background: linear-gradient(30deg, rgb(58, 3, 19), rgb(233, 35, 118), rgb(49, 3, 14));
+}
+
+#admin_body .counter.red h3 {
+    color: rgb(196, 18, 27);
+}
+
+#admin_body .counter.yellow {
+    background: linear-gradient(30deg, rgb(144, 167, 16), rgb(188, 202, 108), rgb(60, 70, 4));
+}
+
+#admin_body .counter.yellow h3 {
+    color: rgb(196, 18, 27);
+}
+
+#admin_body .counter.darkblue {
+    background: linear-gradient(30deg, rgb(88, 18, 219), rgb(100, 109, 189), rgb(7, 4, 212));
+}
+
+#admin_body .counter.darkblue h3 {
+    color: rgb(196, 18, 27);
+}
+
+#admin_body .counter.darkorange {
+    background: linear-gradient(30deg, rgb(219, 200, 138), rgb(134, 108, 57), rgb(68, 27, 6));
+}
+
+#admin_body .counter.darkorange h3 {
+    color: rgb(196, 18, 27);
+}
+
+/* *****************  ADMIN MEDIAFILE *************  */
+#media_lib img {
+    cursor: pointer;
+    width: 100px;
+    height: auto;
+}
+
+.img_trumb{
+
+  min-width: 100px;
+  min-height: 100px;
+  background-color: white;
+  }
+
+#admin_sidebar {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#admin_sidebar p span {
+    display: block;
+    overflow: auto;
+}
+
+/* *********************     menu  admin create   ****************************************** */
+
+#menu_create .list-group {
+    height: 25rem;
+    overflow: auto;
+}
+
+#menu_create .list-group-item {
+    user-select: none;
+    border-bottom: 2px black solid;
+}
+
+#menu_create .list-group input[type="checkbox"] {
+    display: none;
+}
+
+#menu_create .list-group input[type="checkbox"]+.list-group-item {
+    cursor: pointer;
+}
+
+#menu_create .list-group input[type="checkbox"]+.list-group-item:before {
+    content: "\2713";
+    color: transparent;
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+#menu_create .list-group input[type="checkbox"]:checked+.list-group-item {
+    background-color: #0275D8;
+    color: #FFF;
+}
+
+#menu_create .list-group input[type="checkbox"]:checked+.list-group-item:before {
+    color: inherit;
+}
+
+#menu_create .list-group input[type="radio"] {
+    display: none;
+}
+
+#menu_create .list-group input[type="radio"]+.list-group-item {
+    cursor: pointer;
+}
+
+#menu_create .list-group input[type="radio"]+.list-group-item:before {
+    content: "\2022";
+    color: transparent;
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+#menu_create .list-group input[type="radio"]:checked+.list-group-item {
+    background-color: #0275D8;
+
+    color: #FFF;
+}
+
+#menu_create .list-group input[type="radio"]:checked+.list-group-item:before {
+    color: inherit;
+}
+/*  #menu_out BAZE MySql */
+#menu_out {
+    height: 100%;
+
+}
+
+.row.menu_out {
+    padding: 5px;
+
+}
+
+/* *********    My addition to github theme *********** */
+
+#menu_out ul,
+#menu_out li {
+    list-style-type: none;
+    color: #b5e853;
+    border: 1px solid #3f3f3f;
+}
+
+#menu_out ul,
+#sTreeList {
+    padding: 0;
+    background-color: #151515;
+}
+
+#sTreeList li,
+#menu_out li,
+ul#sortableListsBase li {
+    padding-left: 50px;
+    margin: 5px;
+    border: 1px solid #3f3f3f;
+    background-color: #3f3f3f;
+}
+
+#menu_out li div {
+    padding: 7px;
+    background-color: #222;
+}
+
+img.descPicture {
+    display: block;
+    width: 100%;
+    margin: 0 7px 30px 0;
+    float: left;
+    cursor: pointer;
+}
+
+img.descPicture.descPictureClose {
+    width: 150px;
+}
+
+#sTreeList {
+    margin: 10px auto;
+}
+/* ****************    media screen **************** */
+
+@media screen and (max-width: 990px) {
+    #admin_body .counter {
+        margin-bottom: 40px;
+    }
+}
+
+#admin_body .view_all td {
+    padding: 0.3rem 0.5rem;
+}
+
+#admin_body .view_all p {
+    display: block;
+    visibility: hidden;
+}
+
+#admin_body .view_all p a {
+    font-weight: bold;
+    padding-left: 0.5rem;
+    color: darkred;
+}
+
+#admin_body .view_all .table_edit:hover p {
+    visibility: visible;
+}
+
+/* ADMIN MEDIAFILE */
+
+#media_lib img,
+#tiny_img img {
+    cursor: pointer;
+    width: 100px;
+    height: auto;
+}
+#tiny_img {
+    background-color: wheat;
+}
+#admin_sidebar {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#admin_sidebar p span {
+    display: block;
+    overflow: auto;
+}

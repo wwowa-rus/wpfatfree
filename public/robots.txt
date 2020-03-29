@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/*
+Disallow: /views/admin/*
+Sitemap: http://maysite.ru/sitemap.xml

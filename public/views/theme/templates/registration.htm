@@ -1,0 +1,56 @@
+<!-- ******** Registrations form Theme HTM File**********  -->
+<div id="reg_form">
+    <form action="{{ @BASE }}{{ @ALIASES.authreg }}" method="post" class="form_reg p-2 was-validated" novalidate>
+        <div class="reg_messages"></div>
+        <div class="form-icon"><i class="fa fa-key"></i></div>
+        <div class="heading">Welcome</div>
+        <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+        <input type="hidden" name="token" value="{{ @CSRF }}" />
+        <!--  INPUT LOGIN  -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend ">
+                <span class="input-group-text bg-info"><i class="fas fa-user"></i></span>
+            </div>
+            <input name="login" id="login" type="text" class="form-control" value="" placeholder="login" minlength="4"
+                maxlength="15" pattern="^([a-z0-9])+$" required>
+            <div class="invalid-feedback">* 4 - 15 букв и цифр</div>
+        </div>
+        <!--  INPUT EMAIL  -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend ">
+                <span class="input-group-text bg-info"><i class="fas fa-envelope-open-text"></i></span>
+            </div>
+            <input name="email" id="email" type="email" class="form-control" placeholder="email" required>
+            <div class="invalid-feedback">email вида example@mail.com</div>
+        </div>
+        <!--  INPUT PASSWORD  -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-info"><i class="fas fa-user-lock"></i></span>
+            </div>
+            <input name="pass" id="pass" type="password" class="form-control" minlength="4" maxlength="15"
+                pattern="^([A-Za-z0-9-;_!#@])+$" placeholder="Password" autocomplete="off" required>
+            <div class="invalid-feedback">* 4 - 15 en букв и цифр -;_!#@</div>
+        </div>
+        <!-- Пользовательское солашение -->
+        <div class="form-group agreement">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="agree" class="custom-control-input" id="formCheck">
+                <label class="custom-control-label small" for="formCheck">Нажимая кнопку, я принимаю условия
+                    <a href="#">Пользовательского соглашения</a> и даю своё согласие на обработку моих персональных
+                    данных, в соответствии
+                    с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных».</label>
+            </div>
+        </div>
+        <button type="submit" name="reg_user" class="btn btn-sm btn-block" value="regConfirm"
+            disabled>Регистрация</button>
+        <!-- сообщение об errors     -->
+        <div class="form-error bg-danger text-white mt-2 text-center">
+            <repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+                <div class="message {{ @msg.status }}">
+                    {{ @msg.text | esc }}
+                </div>
+            </repeat>
+        </div>
+    </form>
+</div>

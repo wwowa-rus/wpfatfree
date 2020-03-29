@@ -1,0 +1,14 @@
+<!-- ***** Admin SITEMAP HTM file **** -->
+  <div class = "row">
+    <div class = "col-12 p-4">
+    <form  action="/sitemapsave" method="post">
+        <!--  INPUT  hidden token  defenden CSRF ATTAkS-->
+    <div class = "form-row">    
+		<input type="hidden" name="token" value="{{ @CSRF }}"/> 
+        <textarea name = "sitemap" class = "w-100 p-3 text-white-50 bg-dark" rows = "20"  >{{ @site_map }}</textarea>
+        <button type="submit" name="sitemap_create" class="btn btn-sm btn-outline-success btn-block mt-4"><i
+                        class="fas fa-save"></i>Сохранить в файл</button> 
+  </div>
+  </form>
+    </div>
+  </div>
